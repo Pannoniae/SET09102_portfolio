@@ -1,3 +1,3 @@
 # Images folder
 
-To keep your portfolio tidy, place all images in this folder
+Hello, I am the images folder!
