@@ -1,50 +1,72 @@
 # Workflow
 
-This section documents your practical work in week 3.
-
-The main requirements are to show that:
-
-1. You know how to use the workflow tools in GitHub
-2. You have successfully carried out the required operations which are:
-   * Accept a task from the project backlog
-   * Update the task information appropriately
-   * Update the task board appropriately
-   * Complete the development task on a feature branch
-   * Commit your changes with appropriate comments
-   * Check your work against the Definition of Done (DoD)
-   * Make a pull request
-
 ## Task workflow
 
-Here, you should use screenshots and descriptive commentary to show that the required
-have been completed successfully.
+I have assigned myself task [#9](https://github.com/Software-Engineering-Red/MAUI-APP/issues/9).
 
-**DO**
+I have moved it to `In Progress` as shown in Figure 1.
 
-* Consider the layout of your content from the point of view of the reader. Many raw
-  screenshots will take up a lot of space. It may be better to adopt a different strategy
-  such as
-  * Using thumbnails with links to full-size images
-  * Combining two or more screenshots into a single image 
-  * Using partial screenshots to highlight only the important information
-  * etc.
-* Provide links to the actual objects (e.g. task, pull request, etc.) in the team project
-  in GitHub
-* Read through your work to make sure that the information comes across clearly
+| ![ghproject.png](./images/ghproject.png) |
+|:----------------------------------------:|
+|       **Fig.1 - GitHub Projects**        |
 
-**DON'T**
+I have edited the issue to specify the requirements.
 
-* Use humour or informal language
-* Waste space with trivial or self-evident commentary
-* Abbreviate your commentary using (e.g. by using bullet points). Your text should be in
-  the form of grammatically correct sentences.
+| ![ghissue.png](./images/ghissue.png) |
+|:------------------------------------:|
+|           **Fig.2 - Task**           |
+
+
+Then, I have created a branch and I have committed my changes. (Fig. 3 and 4)
+
+| ![ghbranch.png](./images/ghbranch.png) |
+|:--------------------------------------:|
+|       **Fig.3 - Branch created**       |
+
+| ![ghbranch2.png](./images/ghbranch2.png) |
+|:----------------------------------------:|
+|           **Fig.4 - Commits**            |
+
+Checking against the Definition of Done, we are done with the task.
+
+ - All acceptance criteria on issue are met (yes)
+ - All integration tests/Unit tests are passed and/or written if required (N/A)
+ - All review comments have been correctly responded to and addressed if required (yes)
+ - Any additional information should be added in comments on the issue itself with as much detail as possible available to the assigned programmer (N/A)
+
+I have created a pull request ([#26](https://github.com/Software-Engineering-Red/MAUI-APP/pull/26)) to get my changes merged to the repository.
+
+| ![ghpr.png](./images/ghpr.png) |
+|:------------------------------:|
+|    **Fig.5 - Pull Request**    |
+
+
+It has been reviewed and merged in.
+
+| ![ghpr2.png](./images/ghpr2.png) |
+|:--------------------------------:|
+| **Fig.6 - Pull Request review**  |
+
 
 ## Reflection
 
-Here, you should highlight any difficulties that you faced in completing the task, and
-how you resolved them.
+### MAUI App
 
-You should also briefly discuss the current process and how it could be refined or
-improved in future iterations. For example, is the DoD adequate or too onerous? Is the
-current procedure for updating the task appropriate? Is the task board configured to
-work in an intuitive way?
+The application seems to work and look differently on everyone's machines.
+That is certainly interesting, and debugging issues are really complex due to the sandboxed nature of the application.
+Forcing it to display in light/dark mode only works partially; there is white-on-white text.
+
+The application does not work on Windows natively, only under Android.
+I've only accidentally discovered this and this is very surprising.
+
+### Git and teamwork
+There are problems with merging and communication. As not all branches are up-to-date with develop, there are lots of merge conflicts
+which are not resolved appropriately.
+
+The Definition of Done is not great as half of the requirementsare optional, and it does not include anything about deploying/merging code.
+For this definition, the code does not even need to be merged to be "done".
+
+There are no clear written procedures around creating or updating tasks,
+and the project setup is not documented clearly.
+
+The task board itself is good, and the categories are clear.
