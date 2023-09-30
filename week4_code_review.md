@@ -55,7 +55,6 @@ class Program
         //... Code not shown - ignore this line
     }
 }
-
 ```
 
 ## Explaining the improvements
