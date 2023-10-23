@@ -1,18 +1,49 @@
 # Testing
 
-The practical exercise in week 6 involved competitive testing. For your portfolio entry,
-select two pieces of test code that you wrote that best illustrate your skills in this
-area.
+## The tested code
 
-For each example
+The tested function generates a new random word and resets the display to the beginning of the game.
+This is important to test because this is the initialisation of the game.
 
-* Summarise the purpose of the code you were testing
-* Include the test code
-* Provide a brief explanation of the test(s) that are performed
-* Explain why this is an important aspect of the code to test
-* Identify any limitations of your tests (this may be something that you realised after
-  the evaluation).
+## Test 1
 
-Did you manage to write a test which failed during the final evaluation? If so, that would
-make an excellent example. You should briefly discuss why the writer of the code might 
-have overlooked the particular test case that failed.
+This test checks whether invalid challenges are rejected properly.
+It fails if the method does not throw an exception.
+
+
+```csharp
+        [Theory]
+        [InlineData("invalidtype")]
+        [InlineData(null)]
+        [InlineData("")]
+        public void OnAttemptCreateNewBadChallenge(string gameType)
+        {
+            Assert.ThrowsAny<Exception>(() =>
+            {
+                var gamePage = new GamePage(gameType);
+                gamePage.CreateNewChallenge();
+            });
+        }
+```
+
+
+## Test 2
+
+This test checks whether a challenge can be successfully created.
+It fails if the method throws an exception.
+
+```csharp
+        [Theory]
+        [InlineData("Easy")]
+        public void OnAttemptCreateNewChallenge(string gameType)
+        {
+            var gamePage = new GamePage(gameType);
+            gamePage.CreateNewChallenge();
+            Assert.True(true);
+        }
+```
+
+## Evaluation
+
+Please note that the tests have failed during the cross-testing but not due to any inherent problem with the tests themselves,
+but due to environment configuration issues (no platform-specific TFM like `net7.0-windows` or `net7.0-android` defined when cross-testing)
