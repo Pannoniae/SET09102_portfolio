@@ -46,4 +46,4 @@ It fails if the method throws an exception.
 ## Evaluation
 
 Please note that the tests have failed during the cross-testing but not due to any inherent problem with the tests themselves,
-but due to environment configuration issues (no platform-specific TFM like `net7.0-windows` or `net7.0-android` defined when cross-testing)
+but due to environment configuration issues (no platform-specific TFM like `net7.0-windows` or `net7.0-android` defined when cross-testing).
