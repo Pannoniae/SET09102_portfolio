@@ -83,7 +83,6 @@ namespace UndacApp.Models {
             return true;
         }
     }
-
 }
 ```
 *Figure 1: old model file*
@@ -124,7 +123,6 @@ namespace UndacApp.Models {
             set => SetField(ref avaliable, value);
         }
     }
-
 }
 ```
 
