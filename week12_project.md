@@ -44,7 +44,7 @@ var operation = new Operation()
 StatusEntry.SelectedItem = selectedOperation.Status.ToString();
 ```
 
-*Figure 1: Handling OperationStatus*
+*Figure 2: Handling OperationStatus*
 
 
 ## Code reviews
@@ -76,6 +76,8 @@ public OperationPage()
     NameEntry.Text = "";
     }
 ```
+
+*Figure 4: Changes due to feedback on code review*
 
 ### My reviews of others' code
 This week, I have reviewed three pull requests.
