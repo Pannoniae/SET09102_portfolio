@@ -44,19 +44,23 @@ var operation = new Operation()
 StatusEntry.SelectedItem = selectedOperation.Status.ToString();
 ```
 
+*Figure 1: Handling OperationStatus*
+
 
 ## Code reviews
 
 ### Reviews of my code
 
 I have got two reviews for my pull request. One was "Looks good" as usual, but the other one was more detailed this time.
-That review is shown on Figure 2.
+This second review is shown on Figure 3.
 
 ![review3.png](./images/review3.png)
 
-*Figure 2: Code review for my pull request*
+*Figure 3: Code review for my pull request*
 
-To remedy this, I have changed the constructor in this way:
+To remedy this, I have moved the `LoadOperations` function from the constructor to `OnAppearing` as suggested by the reviewer.
+This solves the problem of initialisation not necessarily being complete when the page is loaded if there is a delay with the database
+since the code now waits for `LoadOperations` to finish entirely.
 
 ```diff
 public OperationPage()
@@ -73,95 +77,55 @@ public OperationPage()
     }
 ```
 
-
-
 ### My reviews of others' code
 This week, I have reviewed three pull requests.
 
 #### First
-[Pull Request #188](https://github.com/Software-Engineering-Red/MAUI-APP/pull/188).
+
+[Pull Request #188](https://github.com/Software-Engineering-Red/MAUI-APP/pull/188) converted the weather anomaly page into the MVVM pattern.
+The code was well written, my only comment was that the ViewModel
+should be refactored to be similar to AModel, with a common base class for `INotifyPropertyChanged` boilerplate.
 
 #### Second
-[Pull Request #190](https://github.com/Software-Engineering-Red/MAUI-APP/pull/190).
+[Pull Request #190](https://github.com/Software-Engineering-Red/MAUI-APP/pull/190) added a User page to the application.
+The biggest problem with the code was that `else if`'s were not used at all. Instead of those, nested `if`s were used,
+which made the code *very* indented and hard to read. Furthermore, these methods were very long and had many responsibilities.
+They should have been refactored into several, smaller methods and the `if`'s replaced with guard clauses.
 
 #### Third
-[Pull Request #191](https://github.com/Software-Engineering-Red/MAUI-APP/pull/191).
+[Pull Request #191](https://github.com/Software-Engineering-Red/MAUI-APP/pull/191) re-implemented Equipment with support for associating equipment with Operations.
+The code was good. My only issue with the PR was code duplication in one place. I have suggested it to be refactored into a separate method. I have raised this with the submitter who promptly
+fixed the problem.
 
 
 ## Reflection
 
-*NOTE: This week's portfolio is written together with Week 10 due to the author having COVID.
-It is split into two on a thematic basis, but the reflection chronologically applies to both Week 10 and 11.*
+This week, I have noticed a severe gap in the application. Many completed issues and code references operations, but
+no Operation entity actually existed yet. I have decided to remedy the issue and create a class to represent operations.
+This also closed four issues (the ones referenced in the issue description) overall because those issues effectively require data to be stored on the operation and retrieved,
+which was trivial to add once an Operation class existed.
 
-While being ill during week 10 and week 11, I was checking the team's Discord server but there has been radio silence.
-Teamwork has effectively disappeared in those two weeks. Reviews seem to be handled by people working with their pair,
-but there has been zero discussion on a team level. My pair has disappeared, so I am soliciting people individually to get my code reviewed,
-which is a very suboptimal way of teamwork.
-I have tried reaching out with various questions but team engagement is next to non-existent.
+A potential improvement would be updating all classes, which mainly use strings now, to have a reference to the operations.
+In the user interface side, the operations could be input with a list picker, so only valid operations could be selected.
 
-This week, I have undertaken the fairly large task of updating `master` to the `develop` changes.
-This was not trivial due to the divergence between `master` and `develop`. This was a useful experience for me
-as I have gained skills in merging branches on the command line and using Git from the terminal more effectively.
-I have also read about various Git commands and familiarised myself a bit with vi.
+When I started working on my issue, I have made an error in my workflow. I have forgotten to create a branch before starting to work,
+so my changes were against `develop` instead of my feature branch. This required me to get myself comfortable with the git `stash` feature.
+After I created and checked the necessary feature branch out, I have applied the stash to my working tree.
+This incident made me improve my workflow because it increased my knowledge of Git and Visual Studio.
 
-I have also discovered a bug in the C# compiler where it confused two classes - `UndacApp.Resource` and `UndacApp.Models.Resource`,
-which made an interface not compile due to the compiler thinking the generic parameter had the wrong type.
-This probably happens because `UndacApp.Resource` is an auto-generated class of the application's resources and
-.NET does not take namespaces into account properly.
+I have thought about why this error happened, and I concluded that this problem was not caused by an issue with the workflow.
+Instead, it was a one-off error caused by exhaustion due to sickness, and it is not possible to prevent this with workflow improvements.
 
-In order to fix this, I had to rename the `Resource` model to `AResource` to make the project compile.
+### Summary
+Overall, the team project was an interesting team exercise.
+What worked well on this project is that the quality of code reviews have improved quite a lot. When this project was started,
+most of the code reviews consisted of "LGTM" and simple approvals. However, in the end, most people have reviewed the pull requests in detail,
+and the authors have acted on the feedback before merging them.
+Also, this module was organised much better than the last module where we had teamwork. In this module, the module leader
+conducted oversight over the projects, which helped the projects stay on track. The oversight also helped in facilitating team communication
+by connecting team members and resolving ambiguities.
 
-These things have improved my software engineering practice due to learning my tools better,
-which makes me a more efficient software engineer.
-
-I have also been proactive in importing issues from the SET09102 repository, because
-I have observed that there were barely any open and unassigned issues to do.
-Furthermore, I also reached out to people asking them to follow the workflow more closely, so
-we can avoid merge issues in the future.
-
-
-In terms of possible improvements, it would be beneficial to disable the ability on GitHub to merge a pull request
-ithout addressing the reviewers' comments. It would also be great if the team would follow the agreed-on
-workflow and engage with the other team members and the team project. The code itself also has no tests,
-so a unit test suite would be a significant improvement.
-
-Overall, I am going to continue being proactive with contributing improvements to the team project and exemplifying a standard of quality to the team.
-Also, if the team's social landscape allows it, I will spearhead efforts to improve processes, workflow and team engagement.
-
-# Project work 5
-
-Week 12 is the fifth and last week in a series in which the goal is to improve your
-personal software engineering practice. Your portfolio entry has the same general content
-as last week's, including:
-
-* A descriptive summary of the issue that you worked on.
-* Snippets from your code with commentary showing how you have used good software design
-  practice.
-* A descriptive summary of the test code that you have written.
-* A reflective summary of any changes that were requested during the code review along
-  with your fixes.
-* A descriptive summary of any issues you found with the code that you were asked to review.
-* A general reflective section that identifies, for example,
-  * New things you have realised this week
-  * Common problems that can arise in a team development situation
-  * How your practice compares to other people's
-  * etc.
-
-Be sure to include links to the original items in the team's GitHub repository.
-
-In the reflective sections this week, you should highlight ways that you persona practice
-has improved as before. It would also be good to reflect on any improvements that have
-been made to the agreed team workflow and related procedures. Are things working
-better than they were? What further improvements could be made in the future?
-
-## Marking
-
-The marks for this portfolio entry will be split as follows:
-
-* Timeliness: 5 marks (one mark will be deducted for each day or partial day that the submission
-  is late).
-* Description: 1 mark is awarded for the descriptive content. You are guaranteed at least one
-  question on this entry in the final interview assessment. Please do not skimp on the
-  descriptive content.
-* Reflection: 4 marks are awarded for the quality of reflection. Again, you should think of this
-  as preparation for the interview assessment.
+For personal improvement, I have developed code review skills and the ability to evaluate code from a maintainability perspective.
+I have gained insight on the software development process, and learned what quality code looks like.
+This module has made me realise that theory does not always translate to practice, and it is not trivial to implement
+an agreed-on team workflow so everyone follows it. Sadly, the team did not manage to implement Scrum as it was discussed in the beginning.
