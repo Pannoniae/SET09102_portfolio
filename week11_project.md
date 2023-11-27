@@ -15,7 +15,7 @@ with [PR #178](https://github.com/Software-Engineering-Red/MAUI-APP/pull/178),
 which was about providing an interface in the application to create and manage methodological documentation
 for the UNDAC mission.
 
-The model for the methdological documentation uses the new `AModel` class to eliminate code duplication (Figure 1).
+The model for the methodological documentation uses the new `AModel` class to eliminate code duplication (Figure 1).
 
 ```csharp
 namespace UndacApp.Models {
