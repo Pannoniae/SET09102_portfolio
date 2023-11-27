@@ -74,7 +74,7 @@ public OperationPage()
 +{
 +   await LoadOperations();
     NameEntry.Text = "";
-    }
+}
 ```
 
 *Figure 4: Changes due to feedback on code review*
