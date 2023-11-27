@@ -129,3 +129,5 @@ For personal improvement, I have developed code review skills and the ability to
 I have gained insight on the software development process, and learned what quality code looks like.
 This module has made me realise that theory does not always translate to practice, and it is not trivial to implement
 an agreed-on team workflow so everyone follows it. Sadly, the team did not manage to implement Scrum as it was discussed in the beginning.
+Scrum would have probably helped with implementing the workflow in practice as someone would have had the responsibility and the power
+to implement the workflow and ensure compliance by the team members.
