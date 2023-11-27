@@ -68,8 +68,8 @@ public OperationPage()
     InitializeComponent();
     this.BindingContext = new Operation();
     this.operationService = new OperationService();
-+}
 -   Task.Run(async () => await LoadOperations());
++}
 +protected override async void OnAppearing()
 +{
 +   await LoadOperations();
